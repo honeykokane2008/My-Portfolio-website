@@ -1,0 +1,184 @@
+---
+import {
+	Astronav,
+	MenuItems,
+	MenuIcon,
+	Dropdown,
+	DropdownItems,
+} from "astro-navbar";
+
+import ThemeToggel from "../components/ThemeToggel.astro";
+import navLinks from "../(data)/nav";
+import { ClientRouter } from "astro:transitions";
+const { pathname } = Astro.url;
+---
+
+<style>
+	.gradient-text {
+		background: linear-gradient(
+			135deg,
+			#6366f1 0%,
+			#8b5cf6 50%,
+			#a78bfa 100%
+		);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.sora-heading {
+		font-family: "Sora", sans-serif;
+		font-optical-sizing: auto;
+		font-weight: 600;
+		font-style: normal;
+	}
+</style>
+
+<header
+	class="lg:flex justify-around mx-auto border-2 border-gray-200 p-4 items-center bg-white"
+	transition:persist
+>
+	<ClientRouter />
+	<Astronav closeOnClick>
+		<div class="flex w-full lg:w-auto justify-between">
+			<div
+				class="font-display font-700 text-xl tracking-tight focus-ring"
+			>
+				<a href="/" class="sora-heading gradient-text">honey.</a>
+			</div>
+
+			<div class="flex items-center gap-2 lg:hidden">
+				<ThemeToggel />
+				<MenuIcon class="w-6 h-6 text-gray-800" />
+			</div>
+		</div>
+
+		<!-- Desktop nav  -->
+		<div class="hidden lg:flex items-center">
+			<ul class="flex flex-col lg:flex-row lg:gap-6">
+				{
+					navLinks.map((link) => {
+						const isActive =
+							pathname === link.href ||
+							(link.href !== "/" &&
+								pathname.startsWith(link.href));
+						return (
+							<li>
+								<a
+									href={link.href}
+									data-nav-variant="desktop"
+									data-href={link.href}
+									class:list={[
+										"group relative pb-1 transition-colors",
+										isActive
+											? "text-indigo-600"
+											: "text-gray-600 hover:text-black",
+									]}
+								>
+									{link.name}
+									<span
+										class:list={[
+											"nav-underline absolute bottom-0 left-0 h-0.5 bg-indigo-600 transition-all duration-300 ease-out",
+											isActive
+												? "w-full"
+												: "w-0 group-hover:w-full",
+										]}
+									/>
+								</a>
+							</li>
+						);
+					})
+				}
+			</ul>
+		</div>
+
+		<!-- Mobile / tablet nav (below lg) — the only block controlled by MenuIcon -->
+		<MenuItems class="hidden lg:hidden border-t border-gray-100 absolute left-0 w-full z-1">
+			<nav class="flex flex-col p-3 bg-white">
+				{
+					navLinks.map((link) => {
+						const isActive =
+							pathname === link.href ||
+							(link.href !== "/" &&
+								pathname.startsWith(link.href));
+						return (
+							<a
+								href={link.href}
+								data-nav-variant="mobile"
+								data-href={link.href}
+								class:list={[
+									// "px-4 py-3.5 rounded-xl text-base font-medium transition-colors focus-ring min-h-11 flex items-center",
+									"",
+									isActive
+										? "bg-indigo-50 dark:bg-indigo-100 text-indigo-600  font-semibold"
+										: "text-red  hover:bg-gray-50 dark:hover:bg-slate-800/50",
+								]}
+							>
+								{link.name}
+							</a>
+						);
+					})
+				}
+				<a
+					href="/contact"
+					class="mt-6 px-4 py-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-base font-semibold transition-colors focus-ring text-center shadow-sm"
+				>
+					Hire Me
+				</a>
+			</nav>
+		</MenuItems>
+
+		<div class="hidden lg:flex gap-2.5">
+			<ThemeToggel />
+			<a
+				href="/contact"
+				class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white text-sm font-medium transition-colors focus-ring cursor-pointer"
+			>
+				Hire Me
+			</a>
+		</div>
+	</Astronav>
+</header>
+
+<script>
+	const DESKTOP_BASE = "group relative pb-1 transition-colors";
+	const DESKTOP_ACTIVE = "text-indigo-600";
+	const DESKTOP_INACTIVE = "text-gray-600 hover:text-black";
+
+	const MOBILE_BASE =
+		"flex border border-transparent p-2.5  rounded-2xl";
+	const MOBILE_ACTIVE =
+		"bg-indigo-100 text-indigo-600";
+	const MOBILE_INACTIVE =
+		"flex border border-transparent p-2.5  rounded-2xl";
+
+	function updateActiveLinks() {
+		const path = window.location.pathname;
+		const links = document.querySelectorAll<HTMLAnchorElement>(
+			"header a[data-nav-variant]",
+		);
+
+		links.forEach((link) => {
+			const href = link.dataset.href ?? link.getAttribute("href") ?? "";
+			const isActive =
+				path === href || (href !== "/" && path.startsWith(href));
+			const variant = link.dataset.navVariant;
+
+			if (variant === "desktop") {
+				link.className = `${DESKTOP_BASE} ${isActive ? DESKTOP_ACTIVE : DESKTOP_INACTIVE}`;
+
+				const underline =
+					link.querySelector<HTMLElement>(".nav-underline");
+				if (underline) {
+					underline.className =
+						"nav-underline absolute bottom-0 left-0 h-0.5 bg-indigo-600 transition-all duration-300 ease-out " +
+						(isActive ? "w-full" : "w-0 group-hover:w-full");
+				}
+			} else if (variant === "mobile") {
+				link.className = `${MOBILE_BASE} ${isActive ? MOBILE_ACTIVE : MOBILE_INACTIVE}`;
+			}
+		});
+	}
+
+	document.addEventListener("astro:page-load", updateActiveLinks);
+</script>

@@ -1,0 +1,94 @@
+---
+const currentYear = new Date().getFullYear();
+
+import footerLinks from "../(data)/footerLinks";
+
+import socialLinks from "../(data)/socialLinks";
+---
+
+<style>
+    .gradient-text {
+        background: linear-gradient(
+            135deg,
+            #6366f1 0%,
+            #8b5cf6 50%,
+            #a78bfa 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+</style>
+
+<footer
+    class="border-t border-slate-200/60 dark:border-slate-800/60 bg-white dark:bg-slate-950"
+>
+    <div class="max-w-7xl mx-auto px-5 md:px-10 lg:px-20 py-12">
+        <div class="flex flex-col md:flex-row md:justify-between gap-8">
+            <!-- Brand -->
+            <div>
+                <a
+                    href="/"
+                    class="font-display font-700 text-xl tracking-tight focus-ring"
+                >
+                    <span class="gradient-text">honey.</span>
+                </a>
+                <p
+                    class="mt-2 text-sm text-slate-500 dark:text-slate-400 max-w-xs"
+                >
+                    Full-stack developer · React · Next.js · Node.js
+                </p>
+            </div>
+
+            <!-- Nav links -->
+            <div>
+               
+                <ul class="flex gap-2">
+                    {
+                        footerLinks.map(({ name, href }) => (
+                            <li>
+                                <a
+                                    href={href}
+                                    class="text-sm text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors focus-ring"
+                                >
+                                    {name}
+                                </a>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+
+            <!-- Social links -->
+            <div>
+                
+                <ul class="flex gap-2">
+                    {
+                        socialLinks.map(({ name, href,svg }) => (
+                            <li>
+                                <a
+                                    href={href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="text-sm text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors focus-ring"
+                                   set:html={svg}
+                                >
+                                </a>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <div
+            class="mt-10 pt-6 border-t border-slate-200/60 dark:border-slate-800/60 text-center"
+        >
+            <p class="text-sm text-slate-500 dark:text-slate-400">
+                © {currentYear} Honey Kokane. All rights reserved.
+            </p>
+        </div>
+    </div>
+</footer>
+
+
