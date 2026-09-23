@@ -1,10 +1,91 @@
----
-const currentYear = new Date().getFullYear();
-
-import footerLinks from "../(data)/footerLinks";
-
-import socialLinks from "../(data)/socialLinks";
----
+<footer
+    class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950"
+>
+    <div class="max-w-7xl mx-auto px-5 md:px-10 lg:px-20 py-12">
+        <div
+            class="flex flex-col md:flex-row items-center justify-between gap-6"
+        >
+            <div class="text-center md:text-left">
+                <button
+                    class="font-display font-bold text-xl gradient-text focus-ring"
+                    >honey.</button
+                ><p class="text-sm text-slate-500 dark:text-slate-400 mt-1">
+                    Full-stack developer · React · Next.js · Node.js
+                </p>
+            </div><nav
+                class="flex items-center gap-6 text-sm text-slate-500 dark:text-slate-400"
+            >
+                <button
+                    class="capitalize hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors focus-ring"
+                    >home</button
+                ><button
+                    class="capitalize hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors focus-ring"
+                    >about</button
+                ><button
+                    class="capitalize hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors focus-ring"
+                    >projects</button
+                ><button
+                    class="capitalize hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors focus-ring"
+                    >contact</button
+                >
+            </nav><div class="flex items-center gap-4">
+                <a
+                    href="https://github.com/honey"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors focus-ring p-1"
+                    aria-label="GitHub"
+                    ><svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        class=""
+                        ><path
+                            d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"
+                        ></path></svg
+                    ></a
+                ><a
+                    href="https://linkedin.com/in/honey"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors focus-ring p-1"
+                    aria-label="LinkedIn"
+                    ><svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        class=""
+                        ><path
+                            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"
+                        ></path><circle cx="4" cy="4" r="2"></circle></svg
+                    ></a
+                ><a
+                    href="https://leetcode.com/honey"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors focus-ring p-1"
+                    aria-label="LeetCode"
+                    ><svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        class=""
+                        ><path
+                            d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.823-.662l-4.332-4.363c-.467-.467-.702-1.15-.702-1.863s.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.195 1.823.662l2.697 2.606c.514.515 1.365.497 1.9-.038.535-.536.553-1.387.038-1.901l-2.609-2.636a5.055 5.055 0 0 0-2.445-1.337l2.467-2.503c.516-.514.498-1.366-.037-1.901-.535-.535-1.387-.552-1.902-.038l-10.1 10.101c-.981.982-1.494 2.337-1.494 3.835 0 1.498.513 2.895 1.494 3.875l4.347 4.361c.981.979 2.337 1.452 3.834 1.452s2.853-.512 3.835-1.494l2.609-2.637c.514-.514.496-1.365-.039-1.9s-1.386-.553-1.899-.039zM20.811 13.01H10.666c-.702 0-1.27.604-1.27 1.346s.568 1.346 1.27 1.346h10.145c.701 0 1.27-.604 1.27-1.346s-.569-1.346-1.27-1.346z"
+                        ></path></svg
+                    ></a
+                >
+            </div>
+        </div><div
+            class="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800/50 text-center text-xs text-slate-400 dark:text-slate-500"
+        >
+            © 2026 Honey · Designed &amp; built with care
+        </div>
+    </div>
+</footer>
 
 <style>
     .gradient-text {
@@ -19,76 +100,3 @@ import socialLinks from "../(data)/socialLinks";
         background-clip: text;
     }
 </style>
-
-<footer
-    class="border-t border-slate-200/60 dark:border-slate-800/60 bg-white dark:bg-slate-950"
->
-    <div class="max-w-7xl mx-auto px-5 md:px-10 lg:px-20 py-12">
-        <div class="flex flex-col md:flex-row md:justify-between gap-8">
-            <!-- Brand -->
-            <div>
-                <a
-                    href="/"
-                    class="font-display font-700 text-xl tracking-tight focus-ring"
-                >
-                    <span class="gradient-text">honey.</span>
-                </a>
-                <p
-                    class="mt-2 text-sm text-slate-500 dark:text-slate-400 max-w-xs"
-                >
-                    Full-stack developer · React · Next.js · Node.js
-                </p>
-            </div>
-
-            <!-- Nav links -->
-            <div>
-               
-                <ul class="flex gap-2">
-                    {
-                        footerLinks.map(({ name, href }) => (
-                            <li>
-                                <a
-                                    href={href}
-                                    class="text-sm text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors focus-ring"
-                                >
-                                    {name}
-                                </a>
-                            </li>
-                        ))
-                    }
-                </ul>
-            </div>
-
-            <!-- Social links -->
-            <div>
-                
-                <ul class="flex gap-2">
-                    {
-                        socialLinks.map(({ name, href,svg }) => (
-                            <li>
-                                <a
-                                    href={href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="text-sm text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors focus-ring"
-                                   set:html={svg}
-                                >
-                                </a>
-                            </li>
-                        ))
-                    }
-                </ul>
-            </div>
-        </div>
-
-        <div
-            class="mt-10 pt-6 border-t border-slate-200/60 dark:border-slate-800/60 text-center"
-        >
-            <p class="text-sm text-slate-500 dark:text-slate-400">
-                © {currentYear} Honey Kokane. All rights reserved.
-            </p>
-        </div>
-    </div>
-</footer>
-
-
