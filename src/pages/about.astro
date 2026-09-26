@@ -1,7 +1,269 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import timeline from "../(data)/timeLine";
+import skillGroups from "../(data)/skillGroup";
+
+
 ---
 
+<style>
+    .gradient-text {
+        background: linear-gradient(
+            135deg,
+            #6366f1 0%,
+            #8b5cf6 50%,
+            #a78bfa 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+</style>
+
 <Layout>
-    <div>this is about</div>
+    <section
+        class="py-20 md:py-28 bg-white dark:bg-slate-950 border-b border-slate-100 dark:border-slate-800/60"
+    >
+        <div class="max-w-7xl mx-auto px-5 md:px-10 lg:px-20">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <p
+                        class="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-3 tracking-wide uppercase"
+                    >
+                        About Me
+                    </p>
+                    <h1
+                        class="font-display font-bold text-5xl md:text-6xl text-slate-900 dark:text-slate-100 mb-6"
+                    >
+                        Hi there, I'm <span class="gradient-text">Honey</span>.
+                    </h1>
+                    <div
+                        class="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm mb-6"
+                    >
+                        <span>India · Open to remote worldwide</span>
+                    </div>
+                    <p
+                        class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-4"
+                    >
+                        I'm a first year Btech(Ai and Ds) student and
+                        self-taught full-stack developer. I fell in love with
+                        web development when I realised I could turn an idea
+                        into something real and useful — overnight, for free.
+                    </p>
+                    <p
+                        class="text-base text-slate-500 dark:text-slate-400 leading-relaxed mb-6"
+                    >
+                        My focus is on building products that are both
+                        technically solid and genuinely pleasant to use. I care
+                        about clean code, thoughtful design, and shipping things
+                        that actually work.
+                    </p>
+                    <p
+                        class="text-base text-slate-500 dark:text-slate-400 leading-relaxed mb-8"
+                    >
+                        Outside of code, I solve problems on LeetCode, read
+                        about distributed systems, and occasionally convince
+                        friends to try new tech.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <button
+                            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-semibold transition-colors focus-ring min-h-11"
+                        >
+                            Download Resume
+                        </button>
+                        <div class="flex items-center gap-3">
+                            <a
+                                href="https://github.com/honey"
+                                class="p-3 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-200 dark:hover:border-indigo-800 transition-colors focus-ring min-h-11 min-w-11 flex items-center justify-center"
+                            >
+                                <svg
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    class=""
+                                    ><path
+                                        d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"
+                                    ></path></svg
+                                >
+                            </a>
+                            <a
+                                href="https://linkedin.com/in/honey"
+                                class="p-3 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-200 dark:hover:border-indigo-800 transition-colors focus-ring min-h-11 min-w-11 flex items-center justify-center"
+                            >
+                              <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        class=""
+                        ><path
+                            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"
+                        ></path><circle cx="4" cy="4" r="2"></circle></svg
+                    >
+                            </a>
+                            <a
+                                href="https://leetcode.com/honey"
+                                class="p-3 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-200 dark:hover:border-indigo-800 transition-colors focus-ring min-h-11 min-w-11 flex items-center justify-center"
+                            >
+                               <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        class=""
+                        ><path
+                            d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.823-.662l-4.332-4.363c-.467-.467-.702-1.15-.702-1.863s.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.195 1.823.662l2.697 2.606c.514.515 1.365.497 1.9-.038.535-.536.553-1.387.038-1.901l-2.609-2.636a5.055 5.055 0 0 0-2.445-1.337l2.467-2.503c.516-.514.498-1.366-.037-1.901-.535-.535-1.387-.552-1.902-.038l-10.1 10.101c-.981.982-1.494 2.337-1.494 3.835 0 1.498.513 2.895 1.494 3.875l4.347 4.361c.981.979 2.337 1.452 3.834 1.452s2.853-.512 3.835-1.494l2.609-2.637c.514-.514.496-1.365-.039-1.9s-1.386-.553-1.899-.039zM20.811 13.01H10.666c-.702 0-1.27.604-1.27 1.346s.568 1.346 1.27 1.346h10.145c.701 0 1.27-.604 1.27-1.346s-.569-1.346-1.27-1.346z"
+                        ></path></svg
+                    >
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+               
+                <div class="flex justify-center lg:justify-end">
+                    <div class="relative">
+                        <div
+                            class="w-72 h-80 md:w-80 md:h-96 rounded-3xl overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl shadow-indigo-500/20"
+                        >
+                            <img
+                                src="https://www.linkedin.com/in/honey-kokane-47bb44400/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BCJeHlBGPScSLReWq0wbNWg%3D%3D"
+                                alt="Honey — full-stack developer"
+                                class="w-full h-full object-cover"
+                            />
+                        </div>
+                     
+                        <div
+                            class="absolute -bottom-4 -left-4 w-72 h-80 md:w-80 md:h-96 rounded-3xl border-2 border-indigo-200 dark:border-indigo-900 -z-10"
+                        >
+                        </div>
+                    
+                        <div
+                            class="absolute -bottom-6 -right-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-4 shadow-xl"
+                        >
+                            <div
+                                class="text-2xl font-display font-bold gradient-text"
+                            >
+                                2+
+                            </div>
+                            <div
+                                class="text-xs text-slate-500 dark:text-slate-400"
+                            >
+                                Projects shipped
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <section class="py-24 bg-slate-50 dark:bg-slate-900/50">
+        <div class="max-w-3xl mx-auto px-5 md:px-10 lg:px-20">
+            <p
+                class="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-2 tracking-wide uppercase"
+            >
+                Journey
+            </p>
+            <h2
+                class="font-display font-bold text-3xl md:text-4xl text-slate-900 dark:text-slate-100 mb-12"
+            >
+                How I got here
+            </h2>
+
+            <div
+                class="relative pl-8 border-l-2 border-slate-200 dark:border-slate-700 space-y-10"
+            >
+                {
+                    timeline.map((item) => (
+                        <div class="timeline-dot relative">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300">
+                                    {item.year}
+                                </span>
+                            </div>
+                            <h3 class="font-display font-semibold text-lg text-slate-900 dark:text-slate-100 mb-1.5">
+                                {item.title}
+                            </h3>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                                {item.detail}
+                            </p>
+                        </div>
+                    ))
+                }
+                
+                <div class="relative pl-0">
+                    <div
+                        class="absolute -left-8.25 top-1.5 w-5 h-5 rounded-full bg-indigo-600 dark:bg-indigo-500 border-4 border-white dark:border-slate-900 shadow-md shadow-indigo-500/30"
+                    >
+                    </div>
+                    <span
+                        class="text-sm font-semibold text-indigo-600 dark:text-indigo-400"
+                        >Now — actively building & learning</span
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="py-24 bg-white dark:bg-slate-950">
+        <div class="max-w-7xl mx-auto px-5 md:px-10 lg:px-20">
+            <p
+                class="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-2 tracking-wide uppercase"
+            >
+                Toolkit
+            </p>
+            <h2
+                class="font-display font-bold text-3xl md:text-4xl text-slate-900 dark:text-slate-100 mb-12"
+            >
+                Tools I use
+            </h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                {
+                    skillGroups.map((group) => (
+                        <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-indigo-200 dark:hover:border-indigo-800 transition-colors">
+                            <div class="flex items-center gap-2.5 mb-5">
+                                <div class="w-2 h-6 rounded-full bg-linear-to-b from-indigo-500 to-violet-500" />
+                                <h3 class="font-display font-semibold text-slate-900 dark:text-slate-100">
+                                    {group.label}
+                                </h3>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                {group.skills.map((skill) => (
+                                    <span class="px-3 py-1.5 rounded-lg text-sm font-medium bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-700">
+                                        {skill}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+   
+    <section
+        class="py-16 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-100 dark:border-slate-800/60"
+    >
+        <div class="max-w-7xl mx-auto px-5 md:px-10 lg:px-20 text-center">
+            <h3
+                class="font-display font-semibold text-2xl text-slate-900 dark:text-slate-100 mb-3"
+            >
+                Want the full picture?
+            </h3>
+            <p class="text-slate-500 dark:text-slate-400 mb-6">
+                Download my resume for education, projects, and contact details.
+            </p>
+            <button
+                class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-semibold transition-colors shadow-lg shadow-indigo-500/20 focus-ring min-h-11"
+            >
+       
+                Download Resume (PDF)
+            </button>
+        </div>
+    </section>
 </Layout>

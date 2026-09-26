@@ -11,13 +11,11 @@ const projects = defineCollection({
         description: z.string(),
         problem: z.string(),
         solution: z.string(),
-        category: z.string(),
         github: z.string(),
         live: z.string(),
         accentColor: z.string(),
         features: z.array(z.string()),
         tech: z.array(z.string()),
-        category: z.enum(['Full-Stack', 'Frontend', 'Backend']),
     })
 
 })

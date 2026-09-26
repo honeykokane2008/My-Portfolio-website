@@ -1,62 +1,60 @@
 [
-  {
-    "id": "bookflow",
-    "title": "BookFlow",
-    "tagline": "Multi-tenant booking platform for local businesses",
-    "description": "BookFlow is a SaaS booking system that lets barbershops, salons, clinics, and tutors manage appointments, clients, and payments — all from a single dashboard. Each business gets an isolated workspace with custom branding.",
-    "problem": "Local service businesses rely on phone calls, WhatsApp, or pen-and-paper to manage bookings. This leads to double-booking, missed appointments, and no visibility into revenue or client retention.",
-    "solution": "A multi-tenant platform where each business gets a white-labelled booking page, automated SMS/email reminders, a real-time calendar, and a revenue dashboard — no technical knowledge required.",
-    "tech": [
-      "Next.js",
-      "TypeScript",
-      "PostgreSQL",
-      "Prisma",
-      "Stripe",
-      "Tailwind CSS",
-      "Node.js",
-      "Redis"
-    ],
-    "category": "Full-Stack",
-    "live": "#",
-    "github": "#",
-    "features": [
-      "Multi-tenant architecture with isolated data per business",
-      "Real-time availability calendar with conflict detection",
-      "Stripe-powered payments and subscription billing",
-      "Automated SMS/email reminders via Twilio & Resend",
-      "Business analytics dashboard (revenue, bookings, churn)",
-      "Public booking page with custom subdomain per business"
-    ],
-    "accentColor": "#6366f1"
-  },
-  {
-    "id": "janvaani",
-    "title": "JanVaani",
-    "tagline": "AI-powered civic complaint platform",
-    "description": "JanVaani (Hindi: \"voice of the people\") is a platform where citizens can file complaints about civic issues — potholes, water leaks, garbage overflow — and track resolution in real time. An LLM routes complaints to the right department automatically.",
-    "problem": "Government complaint portals are opaque, slow, and offer no feedback loop. Citizens file complaints without knowing if they will ever be read, let alone resolved.",
-    "solution": "A citizen-facing app with photo upload, GPS tagging, and AI-powered department routing. Officials get a prioritised queue; citizens get status updates and public upvotes show urgency.",
-    "tech": [
-      "React",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "OpenAI API",
-      "Mapbox",
-      "Firebase",
-      "Cloudinary"
-    ],
-    "category": "Full-Stack",
-    "live": "#",
-    "github": "#",
-    "features": [
-      "AI-powered complaint classification and department routing",
-      "Photo upload with GPS location tagging via Mapbox",
-      "Real-time status tracking with push notifications",
-      "Public upvote system to surface urgent issues",
-      "Official dashboard with priority queue and SLA tracking",
-      "Multi-language support (English, Hindi)"
-    ],
-    "accentColor": "#8b5cf6"
-  }
+    {
+        "id": "bookflow",
+        "title": "BookFlow",
+        "tagline": "Multi-tenant booking platform for local businesses",
+        "description": "BookFlow is a SaaS booking system that lets barbershops, salons, clinics, and tutors manage appointments, clients, and payments — all from a single dashboard. Each business gets an isolated workspace with custom branding.",
+        "problem": "Local service businesses rely on phone calls, WhatsApp, or pen-and-paper to manage bookings. This leads to double-booking, missed appointments, and no visibility into revenue or client retention.",
+        "solution": "A multi-tenant platform where each business gets a white-labelled booking page, automated SMS/email reminders, a real-time calendar, and a revenue dashboard — no technical knowledge required.",
+        "tech": [
+            "Next.js",
+            "TypeScript",
+            "PostgreSQL",
+            "Prisma",
+            "Stripe",
+            "Tailwind CSS",
+            "Node.js",
+            "Redis"
+        ],
+        "live": "#",
+        "github": "#",
+        "features": [
+            "Multi-tenant architecture with isolated data per business",
+            "Real-time availability calendar with conflict detection",
+            "Stripe-powered payments and subscription billing",
+            "Automated SMS/email reminders via Twilio & Resend",
+            "Business analytics dashboard (revenue, bookings, churn)",
+            "Public booking page with custom subdomain per business"
+        ],
+        "accentColor": "#6366f1"
+    },
+    {
+        "id": "janvaani",
+        "title": "JanVaani",
+        "tagline": "AI-powered civic complaint platform",
+        "description": "JanVaani (Hindi: \"voice of the people\") is a platform where citizens can file complaints about civic issues — potholes, water leaks, garbage overflow — and track resolution in real time. An LLM routes complaints to the right department automatically.",
+        "problem": "Government complaint portals are opaque, slow, and offer no feedback loop. Citizens file complaints without knowing if they will ever be read, let alone resolved.",
+        "solution": "A citizen-facing app with photo upload, GPS tagging, and AI-powered department routing. Officials get a prioritised queue; citizens get status updates and public upvotes show urgency.",
+        "tech": [
+            "React",
+            "Node.js",
+            "Express",
+            "MongoDB",
+            "OpenAI API",
+            "Mapbox",
+            "Firebase",
+            "Cloudinary"
+        ],
+        "live": "#",
+        "github": "#",
+        "features": [
+            "AI-powered complaint classification and department routing",
+            "Photo upload with GPS location tagging via Mapbox",
+            "Real-time status tracking with push notifications",
+            "Public upvote system to surface urgent issues",
+            "Official dashboard with priority queue and SLA tracking",
+            "Multi-language support (English, Hindi)"
+        ],
+        "accentColor": "#8b5cf6"
+    }
 ]

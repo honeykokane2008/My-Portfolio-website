@@ -2,4 +2,322 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout> this is contact </Layout>
+<Layout>
+
+    <section
+        class="py-20 md:py-24 bg-white dark:bg-slate-950 border-b border-slate-100 dark:border-slate-800/60"
+    >
+        <div class="max-w-7xl mx-auto px-5 md:px-10 lg:px-20">
+            <p
+                class="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-3 tracking-wide uppercase"
+            >
+                Contact
+            </p>
+            <h1
+                class="font-display font-bold text-5xl md:text-6xl text-slate-900 dark:text-slate-100 mb-5"
+            >
+                Let's Connect
+            </h1>
+            <p
+                class="text-lg text-slate-500 dark:text-slate-400 max-w-xl leading-relaxed"
+            >
+                Have a project idea, want to collaborate, or just want to say
+                hi? My inbox is always open.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white dark:bg-slate-950">
+        <div class="max-w-7xl mx-auto px-5 md:px-10 lg:px-20">
+            <div class="grid lg:grid-cols-5 gap-16">
+                {/* Form */}
+                <div class="lg:col-span-3">
+                    {/* Success State (Hidden by default) */}
+                    <div
+                        id="success-state"
+                        class="hidden h-full flex flex-col items-center justify-center text-center py-16"
+                    >
+                        <div
+                            class="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-950/50 flex items-center justify-center mb-5"
+                        >
+                            
+                        </div>
+                        <h2
+                            class="font-display font-bold text-2xl text-slate-900 dark:text-slate-100 mb-2"
+                        >
+                            Message sent!
+                        </h2>
+                        <p
+                            id="success-description"
+                            class="text-slate-500 dark:text-slate-400 mb-6"
+                        >
+                            Thanks for reaching out. I'll get back to you within
+                            24 hours.
+                        </p>
+                        <button
+                            id="reset-btn"
+                            class="text-sm text-indigo-600 dark:text-indigo-400 hover:underline focus-ring"
+                        >
+                            Send another message
+                        </button>
+                    </div>
+
+                  
+                    <form id="contact-form" novalidate class="space-y-5">
+                        <h2
+                            class="font-display font-semibold text-2xl text-slate-900 dark:text-slate-100 mb-6"
+                        >
+                            Send a message
+                        </h2>
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div>
+                                <label
+                                    class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5"
+                                >
+                                    Your name
+                                </label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    placeholder="Alex Johnson"
+                                    class="input-field w-full px-4 py-3 rounded-xl border text-sm bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 transition-colors focus-ring outline-none border-slate-200 dark:border-slate-700 focus:border-indigo-400 dark:focus:border-indigo-500"
+                                />
+                                <p
+                                    id="error-name"
+                                    class="mt-1 text-xs text-red-500 hidden"
+                                >
+                                </p>
+                            </div>
+                            <div>
+                                <label
+                                    class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5"
+                                >
+                                    Email address
+                                </label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    placeholder="alex@example.com"
+                                    class="input-field w-full px-4 py-3 rounded-xl border text-sm bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 transition-colors focus-ring outline-none border-slate-200 dark:border-slate-700 focus:border-indigo-400 dark:focus:border-indigo-500"
+                                />
+                                <p
+                                    id="error-email"
+                                    class="mt-1 text-xs text-red-500 hidden"
+                                >
+                                </p>
+                            </div>
+                        </div>
+                        <div>
+                            <label
+                                class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5"
+                            >
+                                Message
+                            </label>
+                            <textarea
+                                id="message"
+                                placeholder="Hi Honey, I'd love to work with you on..."
+                                rows="6"
+                                class="input-field w-full px-4 py-3 rounded-xl border text-sm bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 transition-colors focus-ring outline-none border-slate-200 dark:border-slate-700 focus:border-indigo-400 dark:focus:border-indigo-500 resize-none"
+                            ></textarea>
+                            <p
+                                id="error-message"
+                                class="mt-1 text-xs text-red-500 hidden"
+                            >
+                            </p>
+                            <p
+                                class="mt-1 text-xs text-slate-400 dark:text-slate-500 text-right"
+                            >
+                                <span id="char-count">0</span> chars
+                            </p>
+                        </div>
+                        <button
+                            type="submit"
+                            class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-semibold transition-all hover:shadow-lg hover:shadow-indigo-500/30 focus-ring min-h-11"
+                        >
+                            Send Message
+                    </form>
+                </div>
+
+             
+                <div class="lg:col-span-2 space-y-8">
+                    <div>
+                        <h3
+                            class="font-display font-semibold text-xl text-slate-900 dark:text-slate-100 mb-4"
+                        >
+                            Get in touch
+                        </h3>
+                        <p
+                            class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed"
+                        >
+                            I'm currently available for freelance work and
+                            internship opportunities. Response time is usually
+                            within 24 hours.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <a
+                            href="mailto:hello@honey.dev"
+                            class="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-indigo-200 dark:hover:border-indigo-800 hover:bg-slate-50 dark:hover:bg-slate-900 transition-all focus-ring group"
+                        >
+                            
+                            <div>
+                                <div
+                                    class="text-xs text-slate-400 dark:text-slate-500 mb-0.5"
+                                >
+                                    Email
+                                </div>
+                                <div
+                                    class="text-sm font-medium text-slate-900 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors"
+                                >
+                                    honeykokane2008@gmail.com
+                                </div>
+                            </div>
+                        </a>
+
+                        <div
+                            class="flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800"
+                        >
+                          
+                            <div>
+                                <div
+                                    class="text-xs text-slate-400 dark:text-slate-500 mb-0.5"
+                                >
+                                    Location
+                                </div>
+                                <div
+                                    class="text-sm font-medium text-slate-900 dark:text-slate-100"
+                                >
+                                    India · Remote worldwide
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                   
+                    <div
+                        class="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900/30"
+                    >
+                        <div class="flex items-center gap-2 mb-1">
+                            <div
+                                class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"
+                            >
+                            </div>
+                            <span
+                                class="text-sm font-semibold text-emerald-700 dark:text-emerald-400"
+                                >Available for work</span
+                            >
+                        </div>
+                        <p
+                            class="text-xs text-emerald-700/80 dark:text-emerald-400/80 leading-relaxed"
+                        >
+                            Open to freelance projects, part-time roles, and
+                            full-time opportunities starting 2026.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <script>
+        const form = document.getElementById("contact-form") as HTMLFormElement;
+        const successState = document.getElementById("success-state");
+        const successDescription = document.getElementById(
+            "success-description",
+        );
+        const resetBtn = document.getElementById("reset-btn");
+
+        const nameInput = document.getElementById("name") as HTMLInputElement;
+        const emailInput = document.getElementById("email") as HTMLInputElement;
+        const messageInput = document.getElementById(
+            "message",
+        ) as HTMLTextAreaElement;
+        const charCount = document.getElementById("char-count");
+
+        const errorName = document.getElementById("error-name");
+        const errorEmail = document.getElementById("error-email");
+        const errorMessage = document.getElementById("error-message");
+
+        messageInput?.addEventListener("input", () => {
+            if (charCount)
+                charCount.textContent = String(messageInput.value.length);
+        });
+
+        form?.addEventListener("submit", (e) => {
+            e.preventDefault();
+            let isValid = true;
+
+            [errorName, errorEmail, errorMessage].forEach((el) => {
+                if (el) {
+                    el.textContent = "";
+                    el.classList.add("hidden");
+                }
+            });
+            [nameInput, emailInput, messageInput].forEach((el) => {
+                el?.classList.remove("border-red-400", "dark:border-red-600");
+            });
+
+            if (!nameInput.value.trim()) {
+                if (errorName) {
+                    errorName.textContent = "Name is required";
+                    errorName.classList.remove("hidden");
+                }
+                nameInput.classList.add(
+                    "border-red-400",
+                    "dark:border-red-600",
+                );
+                isValid = false;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailInput.value)) {
+                if (errorEmail) {
+                    errorEmail.textContent = "Valid email is required";
+                    errorEmail.classList.remove("hidden");
+                }
+                emailInput.classList.add(
+                    "border-red-400",
+                    "dark:border-red-600",
+                );
+                isValid = false;
+            }
+
+            if (messageInput.value.trim().length < 10) {
+                if (errorMessage) {
+                    errorMessage.textContent =
+                        "Message must be at least 10 characters";
+                    errorMessage.classList.remove("hidden");
+                }
+                messageInput.classList.add(
+                    "border-red-400",
+                    "dark:border-red-600",
+                );
+                isValid = false;
+            }
+
+            if (isValid) {
+                const firstName = nameInput.value.trim().split(" ")[0];
+                if (successDescription) {
+                    successDescription.textContent = `Thanks for reaching out, ${firstName}. I'll get back to you within 24 hours.`;
+                }
+                form.classList.add("hidden");
+
+                successState?.classList.remove("hidden");
+                successState?.classList.add("flex");
+            }
+        });
+
+        resetBtn?.addEventListener("click", () => {
+            form.reset();
+            if (charCount) charCount.textContent = "0";
+            successState?.classList.remove("flex");
+            successState?.classList.add("hidden");
+            form.classList.remove("hidden");
+        });
+    </script>
+</Layout>

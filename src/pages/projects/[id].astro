@@ -1,0 +1,151 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+    const projects = await getCollection("projects");
+
+    return projects.map((project) => ({
+        params: { id: project.id },
+        props: { project },
+    }));
+}
+
+interface Props {
+    project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+const {
+    title,
+    tagline,
+    description,
+    problem,
+    solution,
+    features,
+    tech,
+    github,
+    live,
+    accentColor,
+} = project.data;
+---
+
+<Layout>
+    <section class="max-w-4xl mx-auto px-5 md:px-10 py-16 md:py-24">
+        <a
+            href="/projects"
+            class="inline-flex items-center gap-1.5 text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:underline"
+        >
+            &larr; Back to all projects
+        </a>
+
+        <div
+            class="h-1.5 w-16 rounded-full my-6"
+            style={`background-color:${accentColor}`}
+        >
+        </div>
+
+        <h1
+            class="font-display font-bold text-4xl md:text-5xl text-slate-900 dark:text-slate-100 mb-4"
+        >
+            {title}
+        </h1>
+        <p class="text-lg text-slate-500 dark:text-slate-400 mb-8">
+            {tagline}
+        </p>
+
+        <div class="flex flex-wrap gap-2 mb-10">
+            {
+                tech.map((t) => (
+                    <span class="text-xs font-medium px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                        {t}
+                    </span>
+                ))
+            }
+        </div>
+
+        <div class="flex flex-wrap gap-4 mb-12">
+            {
+                live && live !== "#" && (
+                    <a
+                        href={live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="px-5 py-2.5 rounded-lg text-white text-sm font-medium transition-opacity hover:opacity-90"
+                        style={`background-color:${accentColor}`}
+                    >
+                        Live Demo
+                    </a>
+                )
+            }
+            {
+                github && github !== "#" && (
+                    <a
+                        href={github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="px-5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 text-sm font-medium text-slate-700 dark:text-slate-200 transition-colors hover:bg-slate-50 dark:hover:bg-slate-800"
+                    >
+                        View Code
+                    </a>
+                )
+            }
+        </div>
+
+        <div class="space-y-10">
+            <div>
+                <h2
+                    class="font-display font-bold text-2xl text-slate-900 dark:text-slate-100 mb-3"
+                >
+                    Overview
+                </h2>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                    {description}
+                </p>
+            </div>
+
+            <div>
+                <h2
+                    class="font-display font-bold text-2xl text-slate-900 dark:text-slate-100 mb-3"
+                >
+                    The Problem
+                </h2>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                    {problem}
+                </p>
+            </div>
+
+            <div>
+                <h2
+                    class="font-display font-bold text-2xl text-slate-900 dark:text-slate-100 mb-3"
+                >
+                    The Solution
+                </h2>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                    {solution}
+                </p>
+            </div>
+
+            <div>
+                <h2
+                    class="font-display font-bold text-2xl text-slate-900 dark:text-slate-100 mb-3"
+                >
+                    Key Features
+                </h2>
+                <ul class="space-y-2.5">
+                    {
+                        features.map((f) => (
+                            <li class="flex items-start gap-3 text-slate-600 dark:text-slate-300">
+                                <span
+                                    class="mt-1.5 h-1.5 w-1.5 rounded-full shrink-0"
+                                    style={`background-color:${accentColor}`}
+                                />
+                                <span>{f}</span>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+        </div>
+    </section>
+</Layout>
