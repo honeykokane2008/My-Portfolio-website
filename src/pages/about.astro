@@ -2,7 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import timeline from "../(data)/timeLine";
 import skillGroups from "../(data)/skillGroup";
-import Img from "../components/Img.astro";
 ---
 
 <style>
@@ -131,7 +130,11 @@ import Img from "../components/Img.astro";
                         <div
                             class="w-72 h-80 md:w-80 md:h-96 rounded-3xl overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl shadow-indigo-500/20"
                         >
-                          <Img>
+                            <img
+                                src="/public/honey-img.png"
+                                alt="Honey — full-stack developer"
+                                class="w-full h-full object-cover"
+                            />
                         </div>
 
                         <div
@@ -257,12 +260,13 @@ import Img from "../components/Img.astro";
             </p>
             <button
                 class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-semibold transition-colors shadow-lg shadow-indigo-500/20 focus-ring min-h-11"
-            > <a
-                            href="/Honey-Kokane-Resume.pdf"
-                            download="Honey-Kokane_Resume.pdf"
-                        >
-                            Download Resume </a
-                        >
+            >
+                <a
+                    href="/Honey-Kokane-Resume.pdf"
+                    download="Honey-Kokane_Resume.pdf"
+                >
+                    Download Resume
+                </a>
             </button>
         </div>
     </section>
