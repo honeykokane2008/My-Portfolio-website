@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import timeline from "../(data)/timeLine";
 import skillGroups from "../(data)/skillGroup";
 
-
+const resumeUrl = `${import.meta.env.BASE_URL}Honey-Kokane-Resume.pdf`;
 ---
 
 <style>
@@ -68,8 +68,12 @@ import skillGroups from "../(data)/skillGroup";
                     <div class="flex flex-wrap gap-3">
                         <button
                             class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-semibold transition-colors focus-ring min-h-11"
-                        >
-                            Download Resume
+                            ><a
+                                href="/Honey-Kokane-Resume.pdf"
+                                download="Honey-Kokane_Resume.pdf"
+                            >
+                                Download Resume
+                            </a>
                         </button>
                         <div class="flex items-center gap-3">
                             <a
@@ -91,54 +95,54 @@ import skillGroups from "../(data)/skillGroup";
                                 href="https://linkedin.com/in/honey"
                                 class="p-3 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-200 dark:hover:border-indigo-800 transition-colors focus-ring min-h-11 min-w-11 flex items-center justify-center"
                             >
-                              <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        class=""
-                        ><path
-                            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"
-                        ></path><circle cx="4" cy="4" r="2"></circle></svg
-                    >
+                                <svg
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    class=""
+                                    ><path
+                                        d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"
+                                    ></path><circle cx="4" cy="4" r="2"
+                                    ></circle></svg
+                                >
                             </a>
                             <a
                                 href="https://leetcode.com/honey"
                                 class="p-3 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-200 dark:hover:border-indigo-800 transition-colors focus-ring min-h-11 min-w-11 flex items-center justify-center"
                             >
-                               <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        class=""
-                        ><path
-                            d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.823-.662l-4.332-4.363c-.467-.467-.702-1.15-.702-1.863s.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.195 1.823.662l2.697 2.606c.514.515 1.365.497 1.9-.038.535-.536.553-1.387.038-1.901l-2.609-2.636a5.055 5.055 0 0 0-2.445-1.337l2.467-2.503c.516-.514.498-1.366-.037-1.901-.535-.535-1.387-.552-1.902-.038l-10.1 10.101c-.981.982-1.494 2.337-1.494 3.835 0 1.498.513 2.895 1.494 3.875l4.347 4.361c.981.979 2.337 1.452 3.834 1.452s2.853-.512 3.835-1.494l2.609-2.637c.514-.514.496-1.365-.039-1.9s-1.386-.553-1.899-.039zM20.811 13.01H10.666c-.702 0-1.27.604-1.27 1.346s.568 1.346 1.27 1.346h10.145c.701 0 1.27-.604 1.27-1.346s-.569-1.346-1.27-1.346z"
-                        ></path></svg
-                    >
+                                <svg
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    class=""
+                                    ><path
+                                        d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.823-.662l-4.332-4.363c-.467-.467-.702-1.15-.702-1.863s.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.195 1.823.662l2.697 2.606c.514.515 1.365.497 1.9-.038.535-.536.553-1.387.038-1.901l-2.609-2.636a5.055 5.055 0 0 0-2.445-1.337l2.467-2.503c.516-.514.498-1.366-.037-1.901-.535-.535-1.387-.552-1.902-.038l-10.1 10.101c-.981.982-1.494 2.337-1.494 3.835 0 1.498.513 2.895 1.494 3.875l4.347 4.361c.981.979 2.337 1.452 3.834 1.452s2.853-.512 3.835-1.494l2.609-2.637c.514-.514.496-1.365-.039-1.9s-1.386-.553-1.899-.039zM20.811 13.01H10.666c-.702 0-1.27.604-1.27 1.346s.568 1.346 1.27 1.346h10.145c.701 0 1.27-.604 1.27-1.346s-.569-1.346-1.27-1.346z"
+                                    ></path></svg
+                                >
                             </a>
                         </div>
                     </div>
                 </div>
 
-               
                 <div class="flex justify-center lg:justify-end">
                     <div class="relative">
                         <div
                             class="w-72 h-80 md:w-80 md:h-96 rounded-3xl overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl shadow-indigo-500/20"
                         >
                             <img
-                                src="https://www.linkedin.com/in/honey-kokane-47bb44400/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BCJeHlBGPScSLReWq0wbNWg%3D%3D"
+                                src="/public/honey-img.png"
                                 alt="Honey — full-stack developer"
                                 class="w-full h-full object-cover"
                             />
                         </div>
-                     
+
                         <div
                             class="absolute -bottom-4 -left-4 w-72 h-80 md:w-80 md:h-96 rounded-3xl border-2 border-indigo-200 dark:border-indigo-900 -z-10"
                         >
                         </div>
-                    
+
                         <div
                             class="absolute -bottom-6 -right-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl p-4 shadow-xl"
                         >
@@ -159,7 +163,6 @@ import skillGroups from "../(data)/skillGroup";
         </div>
     </section>
 
-   
     <section class="py-24 bg-slate-50 dark:bg-slate-900/50">
         <div class="max-w-3xl mx-auto px-5 md:px-10 lg:px-20">
             <p
@@ -193,7 +196,7 @@ import skillGroups from "../(data)/skillGroup";
                         </div>
                     ))
                 }
-                
+
                 <div class="relative pl-0">
                     <div
                         class="absolute -left-8.25 top-1.5 w-5 h-5 rounded-full bg-indigo-600 dark:bg-indigo-500 border-4 border-white dark:border-slate-900 shadow-md shadow-indigo-500/30"
@@ -207,7 +210,6 @@ import skillGroups from "../(data)/skillGroup";
             </div>
         </div>
     </section>
-
 
     <section class="py-24 bg-white dark:bg-slate-950">
         <div class="max-w-7xl mx-auto px-5 md:px-10 lg:px-20">
@@ -245,7 +247,6 @@ import skillGroups from "../(data)/skillGroup";
         </div>
     </section>
 
-   
     <section
         class="py-16 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-100 dark:border-slate-800/60"
     >
@@ -260,9 +261,12 @@ import skillGroups from "../(data)/skillGroup";
             </p>
             <button
                 class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-semibold transition-colors shadow-lg shadow-indigo-500/20 focus-ring min-h-11"
-            >
-       
-                Download Resume (PDF)
+                ><a
+                    href="/Honey-Kokane-Resume.pdf"
+                    download="Honey-Kokane_Resume.pdf"
+                >
+                    Download Resume
+                </a>
             </button>
         </div>
     </section>
