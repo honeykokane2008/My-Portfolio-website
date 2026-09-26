@@ -1,3 +1,16 @@
+---
+import {
+    Astronav,
+    MenuItems,
+    MenuIcon,
+    Dropdown,
+    DropdownItems,
+} from "astro-navbar";
+
+import navLinks from "../(data)/nav";
+const { pathname } = Astro.url;
+---
+
 <footer
     class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950"
 >
@@ -12,25 +25,49 @@
                 ><p class="text-sm text-slate-500 dark:text-slate-400 mt-1">
                     Full-stack developer · React · Next.js · Node.js
                 </p>
-            </div><nav
-                class="flex items-center gap-6 text-sm text-slate-500 dark:text-slate-400"
-            >
-                <button
-                    class="capitalize hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors focus-ring"
-                    >home</button
-                ><button
-                    class="capitalize hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors focus-ring"
-                    >about</button
-                ><button
-                    class="capitalize hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors focus-ring"
-                    >projects</button
-                ><button
-                    class="capitalize hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors focus-ring"
-                    >contact</button
-                >
-            </nav><div class="flex items-center gap-4">
+            </div>
+
+            <div class=" flex items-center">
+                <ul class="flex flex-row gap-6">
+                    {
+                        navLinks.map((link) => {
+                            const isActive =
+                                pathname === link.href ||
+                                (link.href !== "/" &&
+                                    pathname.startsWith(link.href));
+                            return (
+                                <li>
+                                    <a
+                                        href={link.href}
+                                        data-nav-variant="desktop"
+                                        data-href={link.href}
+                                        class:list={[
+                                            "group relative pb-1 transition-colors",
+                                            isActive
+                                                ? "text-indigo-600"
+                                                : "text-gray-600 ",
+                                        ]}
+                                    >
+                                        {link.name}
+                                        <span
+                                            class:list={[
+                                                "nav-underline absolute bottom-0 left-0 h-0.5 bg-indigo-600 transition-all duration-300 ease-out",
+                                                isActive
+                                                    ? "w-full"
+                                                    : "w-0 group-hover:w-full",
+                                            ]}
+                                        />
+                                    </a>
+                                </li>
+                            );
+                        })
+                    }
+                </ul>
+            </div>
+
+            <div class="flex items-center gap-4">
                 <a
-                    href="https://github.com/honey"
+                    href="https://github.com/honeykokane2008"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors focus-ring p-1"
@@ -46,7 +83,7 @@
                         ></path></svg
                     ></a
                 ><a
-                    href="https://linkedin.com/in/honey"
+                    href="http://www.linkedin.com/in/honey-kokane-47bb44400"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors focus-ring p-1"
@@ -62,7 +99,7 @@
                         ></path><circle cx="4" cy="4" r="2"></circle></svg
                     ></a
                 ><a
-                    href="https://leetcode.com/honey"
+                    href="https://leetcode.com/u/honeykokane2/"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors focus-ring p-1"

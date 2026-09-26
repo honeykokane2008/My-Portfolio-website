@@ -8,6 +8,29 @@ import "../styles/global.css";
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		<script is:inline>
+			(function () {
+				function applyTheme() {
+					const stored = localStorage.getItem("theme");
+					const prefersDark = window.matchMedia(
+						"(prefers-color-scheme: dark)",
+					).matches;
+					const isDark = stored ? stored === "dark" : prefersDark;
+					document.documentElement.classList.toggle("dark", isDark);
+				}
+
+				// Run immediately so there's no flash on first load.
+				applyTheme();
+
+				// Astro's view-transition navigation re-syncs <html>'s
+				// attributes to match the incoming page's raw markup, which
+				// strips the "dark" class we add at runtime (it's never in
+				// the actual HTML). Re-apply it right after each swap,
+				// before the new page paints, so the theme doesn't flicker
+				// or reset when navigating between pages.
+				document.addEventListener("astro:after-swap", applyTheme);
+			})();
+		</script>
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
