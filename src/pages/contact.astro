@@ -132,10 +132,17 @@ import Layout from "../layouts/Layout.astro";
                         </div>
                         <button
                             type="submit"
-                            class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-semibold transition-all hover:shadow-lg hover:shadow-indigo-500/30 focus-ring min-h-11"
+                            class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white font-semibold transition-all hover:shadow-lg hover:shadow-indigo-500/30 focus-ring min-h-11 disabled:opacity-60 disabled:cursor-not-allowed"
                         >
                             Send Message
                         </button>
+                        <p
+                            id="form-error"
+                            class="text-sm text-red-500 text-center hidden"
+                        >
+                            Something went wrong sending your message. Please
+                            try again, or email me directly instead.
+                        </p>
                     </form>
                 </div>
 
@@ -226,12 +233,17 @@ import Layout from "../layouts/Layout.astro";
 
 
     <script>
+        // Get your own free access key at https://web3forms.com — enter your
+        // email, they send the key instantly, no account/login needed.
+        const WEB3FORMS_ACCESS_KEY = "97696ac5-2245-4f21-a8c0-1f034ad5f742";
+
         const form = document.getElementById("contact-form") as HTMLFormElement;
         const successState = document.getElementById("success-state");
         const successDescription = document.getElementById(
             "success-description",
         );
         const resetBtn = document.getElementById("reset-btn");
+        const formError = document.getElementById("form-error");
 
         const nameInput = document.getElementById("name") as HTMLInputElement;
         const emailInput = document.getElementById("email") as HTMLInputElement;
@@ -249,10 +261,11 @@ import Layout from "../layouts/Layout.astro";
                 charCount.textContent = String(messageInput.value.length);
         });
 
-        form?.addEventListener("submit", (e) => {
+        form?.addEventListener("submit", async (e) => {
             e.preventDefault();
             let isValid = true;
 
+            formError?.classList.add("hidden");
             [errorName, errorEmail, errorMessage].forEach((el) => {
                 if (el) {
                     el.textContent = "";
@@ -301,15 +314,55 @@ import Layout from "../layouts/Layout.astro";
                 isValid = false;
             }
 
-            if (isValid) {
-                const firstName = nameInput.value.trim().split(" ")[0];
-                if (successDescription) {
-                    successDescription.textContent = `Thanks for reaching out, ${firstName}. I'll get back to you within 24 hours.`;
-                }
-                form.classList.add("hidden");
+            if (!isValid) return;
 
-                successState?.classList.remove("hidden");
-                successState?.classList.add("flex");
+            const submitBtn = form.querySelector(
+                'button[type="submit"]',
+            ) as HTMLButtonElement | null;
+            const originalBtnText = submitBtn?.textContent ?? "Send Message";
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = "Sending...";
+            }
+
+            try {
+                const response = await fetch(
+                    "https://api.web3forms.com/submit",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Accept: "application/json",
+                        },
+                        body: JSON.stringify({
+                            access_key: WEB3FORMS_ACCESS_KEY,
+                            name: nameInput.value.trim(),
+                            email: emailInput.value.trim(),
+                            message: messageInput.value.trim(),
+                            subject: `New portfolio message from ${nameInput.value.trim()}`,
+                        }),
+                    },
+                );
+                const result = await response.json();
+
+                if (result.success) {
+                    const firstName = nameInput.value.trim().split(" ")[0];
+                    if (successDescription) {
+                        successDescription.textContent = `Thanks for reaching out, ${firstName}. I'll get back to you within 24 hours.`;
+                    }
+                    form.classList.add("hidden");
+                    successState?.classList.remove("hidden");
+                    successState?.classList.add("flex");
+                } else {
+                    formError?.classList.remove("hidden");
+                }
+            } catch (err) {
+                formError?.classList.remove("hidden");
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
+                }
             }
         });
 
