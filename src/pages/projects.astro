@@ -1,191 +1,81 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import { projects } from "../(data)/projects";
+const projects = await getCollection("projects");
+import ProjectCard from "../components/ProjectCard.astro";
+import filters from "../(data)/filters";
+type Filter = (typeof filters)[number];
+const active = 'All';
 
-const filters = ["All", "Full-Stack", "Frontend", "Backend"] as const;
+const visible = active === 'All' ? projects : projects.filter((p) => p.category === active);
 
-function countFor(f: (typeof filters)[number]) {
-  return f === "All"
-    ? projects.length
-    : projects.filter((p) => p.category === f).length;
-}
 ---
 
-<Layout title="All Projects">
-  <main class="">
+<Layout>
     <section
-      class="py-20 md:py-24 bg-white dark:bg-slate-950 border-b border-slate-100 dark:border-slate-800/60"
+        class="py-20 md:py-24 bg-white dark:bg-slate-950 border-b border-slate-100 dark:border-slate-800/60"
     >
-      <div class="max-w-7xl mx-auto px-5 md:px-10 lg:px-20">
-        <p
-          class="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-3 tracking-wide uppercase"
-        >
-          Portfolio
-        </p>
-        <h1
-          class="font-display font-bold text-5xl md:text-6xl text-slate-900 dark:text-slate-100 mb-5"
-        >
-          All Projects
-        </h1>
-        <p
-          class="text-lg text-slate-500 dark:text-slate-400 max-w-xl leading-relaxed"
-        >
-          A collection of things I've designed, built, and shipped. Each one
-          taught me something new.
-        </p>
-      </div>
+        <div class="max-w-7xl mx-auto px-5 md:px-10 lg:px-20">
+            <p
+                class="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-3 tracking-wide uppercase"
+            >
+                Portfolio
+            </p>
+            <h1
+                class="font-display font-bold text-5xl md:text-6xl text-slate-900 dark:text-slate-100 mb-5"
+            >
+                All Projects
+            </h1>
+            <p
+                class="text-lg text-slate-500 dark:text-slate-400 max-w-xl leading-relaxed"
+            >
+                A collection of things I've designed, built, and shipped. Each
+                one taught me something new.
+            </p>
+        </div>
     </section>
 
     <section class="py-16 bg-white dark:bg-slate-950">
-      <div class="max-w-7xl mx-auto px-5 md:px-10 lg:px-20">
-        <div id="filter-bar" class="flex flex-wrap gap-2 mb-10">
-          {
-            filters.map((f) => (
-              <button
-                type="button"
-                data-filter={f}
-                aria-pressed={f === "All" ? "true" : "false"}
-                class:list={[
-                  "filter-chip px-4 py-2 rounded-full text-sm font-medium transition-all focus-ring min-h-[36px]",
-                  f === "All"
-                    ? "bg-indigo-600 dark:bg-indigo-500 text-white shadow-md shadow-indigo-500/20"
-                    : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700",
-                ]}
-              >
-                {f}
-                {f !== "All" && (
-                  <span class="chip-count ml-1.5 text-xs text-slate-400 dark:text-slate-500">
-                    ({countFor(f)})
-                  </span>
-                )}
-              </button>
-            ))
-          }
-        </div>
-
-        <div id="project-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {
-            projects.map((project) => (
-              <a
-                href={`/projects/${project.id}`}
-                data-category={project.category}
-                class="project-card group card-hover cursor-pointer block rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-xl hover:shadow-indigo-500/10"
-              >
-                <div class="relative h-52 bg-slate-100 dark:bg-slate-800 overflow-hidden">
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full text-xs font-medium bg-white/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-300">
-                    {project.category}
-                  </span>
-                </div>
-                <div class="p-6">
-                  <h2 class="font-display font-semibold text-lg text-slate-900 dark:text-slate-100 mb-1.5 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                    {project.title}
-                  </h2>
-                  <p class="text-sm text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">
-                    {project.tagline}
-                  </p>
-                  <div class="flex flex-wrap gap-1.5 mb-5">
-                    {project.tech.slice(0, 5).map((t) => (
-                      <span class="px-2 py-0.5 rounded text-xs font-medium bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300">
-                        {t}
-                      </span>
-                    ))}
-                    {project.tech.length > 5 && (
-                      <span class="px-2 py-0.5 rounded text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-500">
-                        +{project.tech.length - 5}
-                      </span>
-                    )}
-                  </div>
-                  <div class="flex items-center text-sm font-medium text-indigo-600 dark:text-indigo-400 gap-1.5 group-hover:gap-2.5 transition-all">
-                    View case study
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="transition-transform group-hover:translate-x-1"
+        <div class="max-w-7xl mx-auto px-5 md:px-10 lg:px-20 text-white">
+            {
+                filters.map((f) => (
+                    <button
+                        class={`px-4 py-2 rounded-full text-sm font-medium transition-all focus-ring min-h-9}`}
+               
                     >
-                      <path d="M5 12h14" />
-                      <path d="m12 5 7 7-7 7" />
-                    </svg>
-                  </div>
-                </div>
-              </a>
-            ))
-          }
+                        {f}
+                        {f !== "All" && (
+                            <span class={`ml-1.5 text-xs `}>
+                                (
+                                {
+                                    projects.filter((p) => p.category === f).length
+                                        
+                                }
+                                )
+                            </span>
+                        )}
+                    </button>
+                ))
+            }
         </div>
-
-        <div
-          id="empty-state"
-          class="py-20 text-center text-slate-400 dark:text-slate-500 hidden"
-        >
-          No projects in this category yet — check back soon!
-        </div>
-      </div>
     </section>
-  </main>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article
+            key={projects.id}
+            onClick={() => navigate("project-detail", projects.id)}
+            className="group card-hover cursor-pointer rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-xl hover:shadow-indigo-500/10"
+        >
+        </article>
+    </div>
+
+    <script>
+        document.querySelectorAll(".project-card").forEach((card) => {
+            card.addEventListener("click", () => {
+                const projectId = card.getAttribute("data-project-id");
+                // Replace this with your actual navigation logic (e.g., window.location.href)
+                window.location.href = `src/project-detail/${projectId}`;
+            });
+        });
+    </script>
 </Layout>
-
-<script>
-  const bar = document.getElementById("filter-bar")!;
-  const cards = Array.from(
-    document.querySelectorAll<HTMLElement>(".project-card"),
-  );
-  const emptyState = document.getElementById("empty-state")!;
-
-  const activeClasses = [
-    "bg-indigo-600",
-    "dark:bg-indigo-500",
-    "text-white",
-    "shadow-md",
-    "shadow-indigo-500/20",
-  ];
-  const inactiveClasses = [
-    "bg-slate-100",
-    "dark:bg-slate-800",
-    "text-slate-600",
-    "dark:text-slate-400",
-    "hover:bg-slate-200",
-    "dark:hover:bg-slate-700",
-  ];
-
-  function setActive(button: HTMLElement) {
-    bar.querySelectorAll<HTMLElement>(".filter-chip").forEach((btn) => {
-      const isActive = btn === button;
-      btn.setAttribute("aria-pressed", String(isActive));
-      btn.classList.remove(...activeClasses, ...inactiveClasses);
-      btn.classList.add(...(isActive ? activeClasses : inactiveClasses));
-
-      const count = btn.querySelector(".chip-count");
-      if (count) {
-        count.classList.toggle("text-indigo-200", isActive);
-        count.classList.toggle("text-slate-400", !isActive);
-        count.classList.toggle("dark:text-slate-500", !isActive);
-      }
-    });
-  }
-
-  function applyFilter(filter: string) {
-    let visibleCount = 0;
-    cards.forEach((card) => {
-      const match = filter === "All" || card.dataset.category === filter;
-      card.classList.toggle("hidden", !match);
-      if (match) visibleCount++;
-    });
-    emptyState.classList.toggle("hidden", visibleCount !== 0);
-  }
-
-  bar.addEventListener("click", (e) => {
-    const button = (e.target as HTMLElement).closest<HTMLElement>(
-      ".filter-chip",
-    );
-    if (!button) return;
-    setActive(button);
-    applyFilter(button.dataset.filter ?? "All");
-  });
-</script>
